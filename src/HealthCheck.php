@@ -13,7 +13,7 @@ class HealthCheck
 
     public function __construct()
     {
-        $this->healthCheckers = Config::get('laravel_health_check.checkers');
+        $this->healthCheckers = Config::get('laravel_health_check.checkers') ?? [];
     }
 
     public function check(HealthChecker $checker): bool

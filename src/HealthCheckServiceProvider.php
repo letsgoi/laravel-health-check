@@ -3,6 +3,7 @@
 namespace Letsgoi\HealthCheck;
 
 use Illuminate\Support\ServiceProvider;
+use Letsgoi\HealthCheck\Console\HealthCheckCommand;
 
 class HealthCheckServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,8 @@ class HealthCheckServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->registerCommands();
+
         $this->app->bind('health-check', static function () {
             return new HealthCheck();
         });
@@ -25,5 +28,12 @@ class HealthCheckServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/laravel_health_check.php' => config_path('laravel_health_check.php'),
         ], 'config');
+    }
+
+    private function registerCommands(): void
+    {
+        $this->commands([
+            HealthCheckCommand::class,
+        ]);
     }
 }
