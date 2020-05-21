@@ -1,8 +1,9 @@
 <?php
 
-namespace Letsgoi\HealthCheck\Tests;
+namespace Letsgoi\HealthCheck\Tests\Checkers;
 
 use Letsgoi\HealthCheck\Checkers\EnvFileChecker;
+use Letsgoi\HealthCheck\Tests\TestCase;
 
 class EnvFileCheckerTest extends TestCase
 {

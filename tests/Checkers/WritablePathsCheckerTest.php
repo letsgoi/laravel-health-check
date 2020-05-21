@@ -1,9 +1,10 @@
 <?php
 
-namespace Letsgoi\HealthCheck\Tests;
+namespace Letsgoi\HealthCheck\Tests\Checkers;
 
 use Illuminate\Filesystem\Filesystem;
 use Letsgoi\HealthCheck\Checkers\WritablePathsChecker;
+use Letsgoi\HealthCheck\Tests\TestCase;
 use Mockery\MockInterface;
 
 class WritablePathsCheckerTest extends TestCase

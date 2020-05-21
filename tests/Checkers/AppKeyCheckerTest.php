@@ -1,9 +1,10 @@
 <?php
 
-namespace Letsgoi\HealthCheck\Tests;
+namespace Letsgoi\HealthCheck\Tests\Checkers;
 
 use Illuminate\Support\Facades\Config;
 use Letsgoi\HealthCheck\Checkers\AppKeyChecker;
+use Letsgoi\HealthCheck\Tests\TestCase;
 
 class AppKeyCheckerTest extends TestCase
 {

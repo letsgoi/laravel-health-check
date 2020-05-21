@@ -1,9 +1,10 @@
 <?php
 
-namespace Letsgoi\HealthCheck\Tests;
+namespace Letsgoi\HealthCheck\Tests\Checkers;
 
 use Illuminate\Support\Facades\Config;
 use Letsgoi\HealthCheck\Checkers\DebugChecker;
+use Letsgoi\HealthCheck\Tests\TestCase;
 
 class DebugCheckerTest extends TestCase
 {
