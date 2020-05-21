@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="GOI-CS">
+    <rule ref="./vendor/letsgoi/php-code-style/src/phpcs.xml" />
+
+    <!-- Folders included -->
+    <file>src/</file>
+</ruleset>
