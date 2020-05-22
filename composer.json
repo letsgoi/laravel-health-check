@@ -1,0 +1,56 @@
+{
+  "name": "letsgoi/laravel-health-check",
+  "description": "Laravel health checker",
+  "keywords": [
+    "goi",
+    "letsgoi",
+    "laravel",
+    "health",
+    "check",
+    "health-check"
+  ],
+  "homepage": "https://github.com/letsgoi/laravel-health-check",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "GOI",
+      "email": "tech@letsgoi.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "illuminate/support": "^6.0|^7.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0",
+    "orchestra/testbench": "^5.1",
+    "letsgoi/php-code-style": "^0.1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Letsgoi\\HealthCheck\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Letsgoi\\HealthCheck\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Letsgoi\\HealthCheck\\HealthCheckServiceProvider"
+      ],
+      "aliases": {
+        "HealthCheck": "Letsgoi\\HealthCheck\\Facades\\HealthCheck"
+      }
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "syntax": "phpcs"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

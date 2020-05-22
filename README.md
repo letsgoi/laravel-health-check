@@ -1,1 +1,1 @@
-# laravel-healt-check
+# laravel-health-check
