@@ -10,6 +10,6 @@ return [
     |
     */
     'checkers' => [
-        // Letsgoi\HealthCheck\Checkers\Checker.php
+        // Letsgoi\HealthCheck\Checkers\Checker::class,
     ],
 ];
