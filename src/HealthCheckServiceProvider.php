@@ -2,8 +2,10 @@
 
 namespace Letsgoi\HealthCheck;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Letsgoi\HealthCheck\Console\HealthCheckCommand;
+use Letsgoi\HealthCheck\Http\Controllers\HealthCheckController;
 
 class HealthCheckServiceProvider extends ServiceProvider
 {
@@ -20,7 +22,9 @@ class HealthCheckServiceProvider extends ServiceProvider
             return new HealthCheck();
         });
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/laravel_health_check.php', 'health-check');
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravel_health_check.php', 'laravel_health_check');
+
+        $this->registerRoutes();
     }
 
     private function registerPublishes(): void
@@ -35,5 +39,15 @@ class HealthCheckServiceProvider extends ServiceProvider
         $this->commands([
             HealthCheckCommand::class,
         ]);
+    }
+
+    private function registerRoutes(): void
+    {
+        if ($this->app['config']->get('laravel_health_check.endpoint.enabled')) {
+            Route::get(
+                $this->app['config']->get('laravel_health_check.endpoint.path'),
+                HealthCheckController::class
+            );
+        }
     }
 }
