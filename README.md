@@ -93,6 +93,26 @@ php artisan health-check
 
 It show ok if all checks pass or exceptions if fails.
 
+### HealthCheck endpoint
+
+You can configure an endpoint to check the health of your app. Configure it on config file (`laravel_health_check`):
+
+```php
+...
+
+'endpoint' => [
+    'enabled' => env('HEALTH_CHECK_ENDPOINT_ENABLED', true), // Enable/disable endpoint
+
+    'path' => env('HEALTH_CHECK_ENDPOINT_PATH', '/health-check'), // Configure path of endpoint
+
+    'healthy_message' => env('HEALTH_CHECK_ENDPOINT_HEALTHY_MESSAGE', 'Healthy'), // Set ok message
+],
+
+...
+```
+
+It will return the ok message if all check passed or a server error with the array of errors.
+
 ## Checkers
 
 ### Available checkers
