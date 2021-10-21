@@ -2,6 +2,10 @@
 <ruleset name="GOI-CS">
     <rule ref="./vendor/letsgoi/php-code-style/src/phpcs.xml" />
 
+    <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference">
+        <exclude name="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
+    </rule>
+
     <!-- Folders included -->
     <file>src/</file>
 </ruleset>

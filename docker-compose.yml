@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    build: ./docker/php-cli
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www:delegated
+      - ~/.ssh:/root/.ssh:delegated
+    environment:
+      CONTAINER_ROLE: app
+    restart: on-failure
