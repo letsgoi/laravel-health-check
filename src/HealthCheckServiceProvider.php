@@ -46,7 +46,7 @@ class HealthCheckServiceProvider extends ServiceProvider
         if ($this->app['config']->get('laravel_health_check.endpoint.enabled')) {
             Route::get(
                 $this->app['config']->get('laravel_health_check.endpoint.path'),
-                HealthCheckController::class
+                HealthCheckController::class,
             );
         }
     }
