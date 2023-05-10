@@ -4,8 +4,8 @@ Package to perform health check analysis based on defined checkers.
 
 ## Requirements
 
-- PHP >= 7.2
-- Laravel >= 6.0
+- PHP >= 8.1
+- Laravel >= 9.0
 
 ## Instalation
 
