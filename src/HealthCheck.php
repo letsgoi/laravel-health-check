@@ -31,7 +31,7 @@ class HealthCheck
 
         if (count($errors) > 0) {
             throw new HealthCheckerException(
-                "Health check failed:\n\n" . implode("\n", $errors)
+                "Health check failed:\n\n" . implode("\n", $errors),
             );
         }
 
