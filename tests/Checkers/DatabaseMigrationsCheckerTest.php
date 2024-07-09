@@ -5,10 +5,11 @@ namespace Letsgoi\HealthCheck\Tests\Checkers;
 use Illuminate\Support\Facades\Artisan;
 use Letsgoi\HealthCheck\Checkers\DatabaseMigrationsChecker;
 use Letsgoi\HealthCheck\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class DatabaseMigrationsCheckerTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_return_true_if_migrations_are_up_to_date()
     {
         Artisan::shouldReceive('call')
@@ -24,7 +25,7 @@ class DatabaseMigrationsCheckerTest extends TestCase
         $this->assertTrue($databaseMigrationsChecker->check());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_false_if_migrations_are_not_up_to_date()
     {
         Artisan::shouldReceive('call')

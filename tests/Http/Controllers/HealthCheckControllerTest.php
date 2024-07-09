@@ -6,10 +6,11 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
 use Letsgoi\HealthCheck\Facades\HealthCheck;
 use Letsgoi\HealthCheck\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class HealthCheckControllerTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_return_ok_if_all_check_passed_on_endpoint()
     {
         Config::set('laravel_health_check.endpoint.healthy_message', 'ok');
@@ -22,7 +23,7 @@ class HealthCheckControllerTest extends TestCase
             ->assertSee('ok');
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_server_error_with_check_errors()
     {
         HealthCheck::shouldReceive('getCheckErrors')
@@ -38,7 +39,7 @@ class HealthCheckControllerTest extends TestCase
                 'errors' => [
                     'Check one error',
                     'Check two error',
-                ]
+                ],
             ]);
     }
 }
