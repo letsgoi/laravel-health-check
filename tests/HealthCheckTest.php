@@ -9,10 +9,11 @@ use Letsgoi\HealthCheck\HealthCheck;
 use Letsgoi\HealthCheck\Tests\Stubs\FakeKoChecker;
 use Letsgoi\HealthCheck\Tests\Stubs\FakeOkChecker;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class HealthCheckTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_return_true_on_check_ok_checker()
     {
         $healthCheck = new HealthCheck();
@@ -25,7 +26,7 @@ class HealthCheckTest extends TestCase
         $this->assertTrue($healthCheck->check($checker));
     }
 
-    /** @test */
+    #[Test]
     public function it_should_throw_exception_on_check_failed_checker()
     {
         $this->expectException(HealthCheckerException::class);
@@ -40,7 +41,7 @@ class HealthCheckTest extends TestCase
         $healthCheck->check($checker);
     }
 
-    /** @test */
+    #[Test]
     public function it_should_check_all_active_checkers_and_return_true_if_all_are_ok()
     {
         Config::set('laravel_health_check.checkers', [
@@ -54,14 +55,14 @@ class HealthCheckTest extends TestCase
         $this->assertTrue($healthCheck->healthCheck());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_throw_exception_if_any_of_checkers_is_failing()
     {
         $this->expectException(HealthCheckerException::class);
         $this->expectExceptionMessage(
             "Health check failed:\n\n" .
-            FakeKoChecker::class . " check failed.\n".
-            FakeKoChecker::class . ' check failed.'
+            FakeKoChecker::class . " check failed.\n" .
+            FakeKoChecker::class . ' check failed.',
         );
 
         Config::set('laravel_health_check.checkers', [
@@ -76,7 +77,7 @@ class HealthCheckTest extends TestCase
         $healthCheck->healthCheck();
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_all_errors_of_failing_checkers()
     {
         Config::set('laravel_health_check.checkers', [
@@ -92,7 +93,7 @@ class HealthCheckTest extends TestCase
                 FakeKoChecker::class . ' check failed.',
                 FakeKoChecker::class . ' check failed.',
             ],
-            $healthCheck->getCheckErrors()
+            $healthCheck->getCheckErrors(),
         );
     }
 }

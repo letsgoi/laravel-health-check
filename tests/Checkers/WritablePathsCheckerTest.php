@@ -6,13 +6,14 @@ use Illuminate\Filesystem\Filesystem;
 use Letsgoi\HealthCheck\Checkers\WritablePathsChecker;
 use Letsgoi\HealthCheck\Tests\TestCase;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 
 class WritablePathsCheckerTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_should_return_true_if_storage_and_cache_paths_are_writable()
     {
-        $this->mock(Filesystem::class, static function(MockInterface $mock) {
+        $this->mock(Filesystem::class, static function (MockInterface $mock) {
             $mock->shouldReceive('isWritable')
                 ->with(base_path('bootstrap/cache'))
                 ->once()
@@ -29,10 +30,10 @@ class WritablePathsCheckerTest extends TestCase
         $this->assertTrue($writablePathsChecker->check());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_false_if_cache_path_is_not_writable()
     {
-        $this->mock(Filesystem::class, static function(MockInterface $mock) {
+        $this->mock(Filesystem::class, static function (MockInterface $mock) {
             $mock->shouldReceive('isWritable')
                 ->with(base_path('bootstrap/cache'))
                 ->once()
@@ -44,10 +45,10 @@ class WritablePathsCheckerTest extends TestCase
         $this->assertFalse($writablePathsChecker->check());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_false_if_storage_path_is_not_writable()
     {
-        $this->mock(Filesystem::class, static function(MockInterface $mock) {
+        $this->mock(Filesystem::class, static function (MockInterface $mock) {
             $mock->shouldReceive('isWritable')
                 ->with(base_path('bootstrap/cache'))
                 ->once()

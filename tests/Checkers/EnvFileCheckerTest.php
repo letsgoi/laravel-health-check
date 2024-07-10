@@ -4,6 +4,7 @@ namespace Letsgoi\HealthCheck\Tests\Checkers;
 
 use Letsgoi\HealthCheck\Checkers\EnvFileChecker;
 use Letsgoi\HealthCheck\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class EnvFileCheckerTest extends TestCase
 {
@@ -14,7 +15,7 @@ class EnvFileCheckerTest extends TestCase
         parent::tearDown();
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_true_if_env_file_exists()
     {
         touch(base_path('.env'));
@@ -24,7 +25,7 @@ class EnvFileCheckerTest extends TestCase
         $this->assertTrue($envFileChecker->check());
     }
 
-    /** @test */
+    #[Test]
     public function it_should_return_true_if_env_file_not_exists()
     {
         $envFileChecker = new EnvFileChecker();
